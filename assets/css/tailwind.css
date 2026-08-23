@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+header .router-link-active {
+  @apply text-zero3;
+}
+
+.linkClass {
+  @apply relative  transition-all duration-300;
+}
+.linkClass:hover {
+  @apply text-zero3 relative transition-all duration-300;
+}
+
+.containerClass {
+  @apply px-4 md:px-12;
+}
+.accountClass .router-link-active {
+  @apply text-color14 bg-fc px-6;
+}
+.accountClassSmall .router-link-active {
+  @apply text-color14 bg-gray-300 rounded-lg;
+}
+
+@media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  *::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: white;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    @apply bg-zero3 transition-all duration-300 rounded-lg;
+  }
+
+  .smallScrollBar::-webkit-scrollbar {
+    width: 4px;
+    height: 0.5rem;
+  }
+
+  .smallScrollBar::-webkit-scrollbar-track {
+    background: white;
+  }
+
+  .smallScrollBar::-webkit-scrollbar-thumb {
+    @apply bg-zero3 transition-all duration-300 rounded-lg;
+  }
+}
+
+/* firfox */
+@-moz-document url-prefix() {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #03c8bf white;
+  }
+  .smallScrollBar {
+    scrollbar-width: thin;
+    scrollbar-color: #03c8bf white;
+  }
+}
+
+.number-none::-webkit-outer-spin-button,
+.number-none::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.number-none[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.no.router-link-active::after {
+  @apply w-0 h-0;
+}
+.custom-triangle {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+/* body {
+  @apply bg-gray-950;
+} */
