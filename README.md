@@ -4,7 +4,7 @@ This application runs on [Resux](https://github.com/MahmoudAbdalrhmanMohamed/res
 
 ## Requirements
 
-- Node.js 20.19 or newer
+- Node.js 20.19.x, or Node.js 22.12 or newer
 - npm
 - Resux is installed from npm through the `resuxjs` dependency
 
@@ -72,7 +72,7 @@ Resux detects the Vercel environment and produces the Vercel Build Output automa
 
 Configure the Vercel project with:
 
-- Node.js 20.19 or newer
+- Node.js 20.19.x, or Node.js 22.12 or newer
 - `RESUX_HALAL_REPORT_SIGNING_SECRET` for Production and Preview, using a unique value of at least 32 characters
 - `RESUX_PUBLIC_CONSTURL` only when the deployed API base URL must differ from the built-in default
 
