@@ -85,7 +85,6 @@
 </template>
 
 <script setup>
-import { ref, watch, onMounted, onBeforeUnmount } from "vue";
 const img = "/assets/products/img.webp";
 
 const { t, locale } = useI18n();
@@ -99,19 +98,6 @@ watch(showval, (newVal) => {
   }
 });
 
-const handleClickOutside = (event) => {
-  if (!event.target.closest(".mahmoud")) {
-    show.value = false;
-  }
-};
-
-onMounted(() => {
-  document.addEventListener("click", handleClickOutside);
-});
-
-onBeforeUnmount(() => {
-  document.removeEventListener("click", handleClickOutside);
-});
 
 useSeoMeta({
   title: t("seoMega.products.title"),
