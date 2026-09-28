@@ -173,7 +173,6 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from "vue";
 const eg = "/assets/top/eg.svg";
 const ua = "/assets/top/ua.svg";
 const sa = "/assets/top/sa.svg";
@@ -197,24 +196,6 @@ const fallbackContactData = {
 const toggleDropdown = () => {
   show.value = !show.value;
 };
-
-const handleClickOutside = (event) => {
-  if (dropdownRef.value && !dropdownRef.value.contains(event.target)) {
-    show.value = false;
-  }
-};
-
-onMounted(() => {
-  if (typeof document !== "undefined") {
-    document.addEventListener("click", handleClickOutside);
-  }
-});
-
-onUnmounted(() => {
-  if (typeof document !== "undefined") {
-    document.removeEventListener("click", handleClickOutside);
-  }
-});
 
 const switchLocalePath = useSwitchLocalePath();
 const { locale, setLocale } = useI18n();
