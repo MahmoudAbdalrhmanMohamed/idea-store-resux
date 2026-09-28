@@ -239,25 +239,11 @@ const setActiveCountry = (key) => {
 
 const config = useRuntimeConfig();
 const url = config.public.ConstUrl;
-const resuxApp = useResuxApp();
+const { data, error, pending } = await useFetch(`${url}/settings`);
 
-const { data, error, pending } = await useFetch(`${url}/settings`, {
-  getCachedData: (key) => resuxApp.payload.data[key] || resuxApp.static.data[key],
-  retry: 3,
-  retryDelay: 1000,
-  timeout: 10000,
-  onRequestError({ error: requestError }) {
-    console.error("TopBar settings request failed:", requestError);
-    apiError.value = true;
-  },
-  onResponseError({ response }) {
-    console.error("TopBar settings API error:", {
-      status: response?.status,
-      data: response?._data,
-    });
-    apiError.value = true;
-  },
-});
+if (error.value) {
+  apiError.value = true;
+}
 
 const contactData = computed(() => {
   if (pending.value) {
