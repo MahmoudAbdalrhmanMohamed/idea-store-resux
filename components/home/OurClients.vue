@@ -44,14 +44,10 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-
 const config = useRuntimeConfig();
 const url = config.public.ConstUrl;
 
-const { data: dataVal, error } = await useFetch(`${url}/clients`, {
-  timeout: 10000,
-});
+const { data: dataVal, error } = await useFetch(`${url}/clients`);
 
 const swiperOptions = {
   loop: true,
