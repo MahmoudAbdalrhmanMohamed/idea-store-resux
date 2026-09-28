@@ -24,19 +24,29 @@ http://localhost:6534
 
 ## Environment
 
-Copy `.env.example` to `.env` when you need to override the public API base URL:
+Copy `.env.example` to `.env` when you need local environment overrides:
 
 ```bash
 cp .env.example .env
 ```
 
+The public API URL is optional because the application has the same URL as a built-in fallback:
+
 ```env
 RESUX_PUBLIC_CONSTURL=https://isp.megatron-soft.com/api/v1
 ```
 
-If the variable is not set, the application uses the same URL as its built-in default.
+Resux production builds require a report-signing secret:
+
+```env
+RESUX_HALAL_REPORT_SIGNING_SECRET=replace-with-a-unique-32-plus-character-secret
+```
+
+Use a unique value with at least 32 characters. Never commit the real production secret.
 
 ## Production build
+
+Set `RESUX_HALAL_REPORT_SIGNING_SECRET`, then run:
 
 ```bash
 npm ci
@@ -60,7 +70,13 @@ npm run build
 
 Resux detects the Vercel environment and produces the Vercel Build Output automatically.
 
-For Vercel, use Node.js 20.19+ and configure `RESUX_PUBLIC_CONSTURL` only if the production API base URL must differ from the built-in default.
+Configure the Vercel project with:
+
+- Node.js 20.19 or newer
+- `RESUX_HALAL_REPORT_SIGNING_SECRET` for Production and Preview, using a unique value of at least 32 characters
+- `RESUX_PUBLIC_CONSTURL` only when the deployed API base URL must differ from the built-in default
+
+Do not store the production signing secret in the repository.
 
 ## Main Resux configuration
 
