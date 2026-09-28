@@ -35,6 +35,7 @@ jobs:
         env:
           VERCEL: "1"
           VERCEL_ENV: preview
+          RESUX_HALAL_REPORT_SIGNING_SECRET: "idea-store-ci-report-signing-secret-not-for-production-use"
 
       - name: Verify Vercel build output
         shell: bash
