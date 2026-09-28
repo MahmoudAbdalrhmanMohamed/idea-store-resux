@@ -89,8 +89,6 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from "vue";
-
 const home = "/assets/home.webm";
 const whatsapp = "/assets/whatsapp.webm";
 const poster = "/assets/poster.webp";
@@ -131,9 +129,7 @@ const config = useRuntimeConfig();
 const url = config.public.ConstUrl;
 
 // Fetch settings
-const { data, error, pending } = await useFetch(`${url}/settings`, {
-  timeout: 10000,
-});
+const { data, error, pending } = await useFetch(`${url}/settings`);
 
 if (error.value) {
   apiError.value = true;
