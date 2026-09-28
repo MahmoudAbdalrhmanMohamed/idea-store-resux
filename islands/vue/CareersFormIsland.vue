@@ -370,10 +370,51 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount, watch } from "vue";
 import { useDropZone } from "@vueuse/core";
+import {
+  ErrorMessage as VeeErrorMessage,
+  Field as VeeField,
+  Form as VeeForm,
+  defineRule,
+} from "vee-validate";
 import SelectMenu from "../../components/public/SelectMenu.vue";
 import { useToast } from "../../composables/useToast";
 import ar from "../../i18n/locales/ar.json";
 import en from "../../i18n/locales/en.json";
+
+defineRule("required", (value) => {
+  if (Array.isArray(value)) {
+    return value.length > 0 || "This field is required";
+  }
+  return (
+    value !== undefined &&
+    value !== null &&
+    String(value).trim().length > 0
+  ) || "This field is required";
+});
+
+defineRule("email", (value) =>
+  !value ||
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value)) ||
+  "Enter a valid email"
+);
+
+defineRule("min", (value, [limit]) =>
+  !value ||
+  String(value).length >= Number(limit) ||
+  `Minimum ${limit} characters`
+);
+
+defineRule("max", (value, [limit]) =>
+  !value ||
+  String(value).length <= Number(limit) ||
+  `Maximum ${limit} characters`
+);
+
+defineRule("alphaSpaces", (value) =>
+  !value ||
+  /^[\p{L}\s'-]+$/u.test(String(value)) ||
+  "Use letters and spaces only"
+);
 
 const props = defineProps({
   url: {
