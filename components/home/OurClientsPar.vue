@@ -128,8 +128,6 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from "vue";
-
 // Fallback client data (optional - you can add placeholder images)
 const fallbackClients = [
   {
@@ -166,38 +164,16 @@ const imageErrors = ref({});
 
 const config = useRuntimeConfig();
 const url = config.public.ConstUrl;
-const resuxApp = useResuxApp();
-
 const {
   data: dataVal,
   error,
   pending,
   refresh,
-} = await useFetch(`${url}/clients`, {
-  getCachedData: (key) => resuxApp.payload.data[key] || resuxApp.static.data[key],
+} = await useFetch(`${url}/clients`);
 
-  retry: maxRetries,
-  retryDelay: 1000,
-  timeout: 10000,
-
-  onRequestError({ error: requestError }) {
-    console.error("Clients grid request failed:", requestError);
-    apiError.value = true;
-  },
-
-  onResponseError({ response }) {
-    console.error("Clients grid API error:", {
-      status: response?.status,
-      data: response?._data,
-    });
-    apiError.value = true;
-  },
-
-  // Fallback data structure
-  default: () => ({
-    data: [],
-  }),
-});
+if (error.value) {
+  apiError.value = true;
+}
 
 // Computed property for displayed clients with fallback
 const displayedClients = computed(() => {
@@ -248,23 +224,6 @@ const retryApiCall = async () => {
 };
 
 
-// Network recovery detection
-if (process.client) {
-  window.addEventListener("online", () => {
-    if (apiError.value) {
-      apiError.value = false;
-      showApiError.value = false;
-      retryCount.value = 0;
-    }
-  });
-}
-
-// Save to cache when data loads successfully
-onMounted(() => {
-  if (dataVal.value?.data?.length && !error.value && !pending.value) {
-    saveToCache();
-  }
-});
 </script>
 
 <style>
