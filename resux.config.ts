@@ -1,5 +1,22 @@
 export default defineResuxConfig({
   css: ["/tailwind.css"],
+
+  deploy: {
+    target: "vercel",
+    nitroPreset: "vercel"
+  },
+
+  image: {
+    provider: "resux",
+    quality: 82,
+    format: "webp",
+    cache: "7d",
+    densities: [1, 2],
+    providers: {
+      resux: { baseURL: "/__resux/image" }
+    }
+  },
+
   modules: [
     "resux:security",
     ["resux:performance", { assetMaxAge: 31536000 }],
@@ -12,7 +29,22 @@ export default defineResuxConfig({
     ["resuxjs/icons", {
       component: "Icon",
       mode: "svg",
-      collections: ["material-symbols", "mdi", "mingcute", "cib", "uil", "line-md", "gg", "iconoir", "solar", "streamline", "lineicons", "hugeicons", "icon-park-solid", "svg-spinners"]
+      collections: [
+        "material-symbols",
+        "mdi",
+        "mingcute",
+        "cib",
+        "uil",
+        "line-md",
+        "gg",
+        "iconoir",
+        "solar",
+        "streamline",
+        "lineicons",
+        "hugeicons",
+        "icon-park-solid",
+        "svg-spinners"
+      ]
     }],
     ["resuxjs/ui", {
       tokens: {
@@ -33,38 +65,26 @@ export default defineResuxConfig({
       }
     }]
   ],
+
   packages: {
     mode: {
-      swiper: "progressive",
-      "date-fns": "ssr",
-      "v-calendar": "clientOnly",
-      "vee-validate": "clientOnly"
+      swiper: "progressive"
     },
     css: {
       swiper: [
         "swiper/css",
         "swiper/css/navigation",
         "swiper/css/pagination"
-      ],
-      "v-calendar": [
-        "v-calendar/dist/style.css"
       ]
     }
   },
+
   runtimeConfig: {
     public: {
-      ConstUrl: process.env.RESUX_PUBLIC_CONSTURL || process.env.NUXT_PUBLIC_CONSTURL || "https://isp.megatron-soft.com/api/v1",
-      image: {
-        provider: "resux",
-        quality: 82,
-        format: "webp",
-        densities: [1, 2],
-        providers: {
-          resux: { baseURL: "/__resux/image" }
-        }
-      }
+      ConstUrl: process.env.RESUX_PUBLIC_CONSTURL || "https://isp.megatron-soft.com/api/v1"
     }
   },
+
   app: {
     head: {
       link: [
