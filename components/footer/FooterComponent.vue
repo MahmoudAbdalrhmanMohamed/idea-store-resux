@@ -255,7 +255,6 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from "vue";
 const img = "/assets/footer/footer.webp";
 const localePath = useLocalePath();
 const { locale } = useI18n();
@@ -279,30 +278,12 @@ const showApiError = ref(true);
 
 const config = useRuntimeConfig();
 const url = config.public.ConstUrl;
-const resuxApp = useResuxApp();
+// Fetch settings through the Resux async-data resource.
+const { data, error, pending } = await useFetch(`${url}/settings`);
 
-// Fetch data with better error handling
-const { data, error, pending } = await useFetch(`${url}/settings`, {
-  getCachedData: (key) =>
-    resuxApp.payload.data[key] || resuxApp.static.data[key],
-  
-  retry: 3,
-  retryDelay: 1000,
-  timeout: 10000,
-  
-  onRequestError({ error: requestError }) {
-    console.error("Footer settings request failed:", requestError);
-    apiError.value = true;
-  },
-  
-  onResponseError({ response }) {
-    console.error("Footer settings API error:", {
-      status: response?.status,
-      data: response?._data,
-    });
-    apiError.value = true;
-  },
-});
+if (error.value) {
+  apiError.value = true;
+}
 
 // Computed property for safe data access
 const contactData = computed(() => {
