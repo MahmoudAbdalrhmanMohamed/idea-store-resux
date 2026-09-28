@@ -1,5 +1,5 @@
 {
-  "name": "idea-stores",
+  "name": "idea-store-resux",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,11 +9,14 @@
     "preview": "resux preview . --port 6534",
     "check": "resux check ."
   },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
   "dependencies": {
     "@vueuse/core": "^12.5.0",
-    "resuxjs": "file:../resux/resuxjs-0.3.0.tgz",
+    "resuxjs": "^0.3.11",
     "swiper": "^11.2.2",
-    "vue": "^3.4.0",
+    "vue": "^3.5.33",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {

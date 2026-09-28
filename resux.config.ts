@@ -20,40 +20,36 @@ export default defineResuxConfig({
         heroOverlay: "rgba(0,0,0,0.55)"
       }
     }],
-    ["resux:i18n", {
-      defaultLocale: "en",
-      strategy: "prefix",
-      locales: [
-        { code: "en", name: "English", dir: "ltr" },
-        { code: "ar", name: "Arabic", dir: "rtl" }
-      ],
-      messages: {
-        en: "./i18n/locales/en.json",
-        ar: "./i18n/locales/ar.json"
-      }
-    }]
+    "resuxjs/i18n"
   ],
+  i18n: {
+    defaultLocale: "en",
+    fallbackLocale: "en",
+    strategy: "prefix",
+    locales: [
+      { code: "en", name: "English", dir: "ltr" },
+      { code: "ar", name: "Arabic", dir: "rtl" }
+    ],
+    messages: {
+      en: "./i18n/locales/en.json",
+      ar: "./i18n/locales/ar.json"
+    }
+  },
   packages: {
     mode: {
-      swiper: "progressive",
-      "date-fns": "ssr",
-      "v-calendar": "clientOnly",
-      "vee-validate": "clientOnly"
+      swiper: "progressive"
     },
     css: {
       swiper: [
         "swiper/css",
         "swiper/css/navigation",
         "swiper/css/pagination"
-      ],
-      "v-calendar": [
-        "v-calendar/dist/style.css"
       ]
     }
   },
   runtimeConfig: {
     public: {
-      ConstUrl: process.env.RESUX_PUBLIC_CONSTURL || process.env.NUXT_PUBLIC_CONSTURL || "https://isp.megatron-soft.com/api/v1",
+      ConstUrl: process.env.RESUX_PUBLIC_CONSTURL || "https://isp.megatron-soft.com/api/v1",
       image: {
         provider: "resux",
         quality: 82,

@@ -1,75 +1,87 @@
-# Nuxt Minimal Starter
+# Idea Store — Resux
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This application runs on [Resux](https://github.com/MahmoudAbdalrhmanMohamed/resux) and is configured for deployment on Vercel.
 
-## Setup
+## Requirements
 
-Make sure to install dependencies:
+- Node.js 20.19.x, or Node.js 22.12 or newer
+- npm
+- Resux is installed from npm through the `resuxjs` dependency
 
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+## Local development
 
 ```bash
-# npm
+npm ci
+npm run check
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+The development server runs on:
 
-Build the application for production:
+```text
+http://localhost:6534
+```
+
+## Environment
+
+Copy `.env.example` to `.env` when you need local environment overrides:
 
 ```bash
-# npm
+cp .env.example .env
+```
+
+The public API URL is optional because the application has the same URL as a built-in fallback:
+
+```env
+RESUX_PUBLIC_CONSTURL=https://isp.megatron-soft.com/api/v1
+```
+
+Resux production builds require a report-signing secret:
+
+```env
+RESUX_HALAL_REPORT_SIGNING_SECRET=replace-with-a-unique-32-plus-character-secret
+```
+
+Use a unique value with at least 32 characters. Never commit the real production secret.
+
+## Production build
+
+Set `RESUX_HALAL_REPORT_SIGNING_SECRET`, then run:
+
+```bash
+npm ci
+npm run check
 npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+To preview the production build locally:
 
 ```bash
-# npm
 npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Vercel
+
+The repository includes `vercel.json`. Vercel runs:
+
+```bash
+npm run build
+```
+
+Resux detects the Vercel environment and produces the Vercel Build Output automatically.
+
+Configure the Vercel project with:
+
+- Node.js 20.19.x, or Node.js 22.12 or newer
+- `RESUX_HALAL_REPORT_SIGNING_SECRET` for Production and Preview, using a unique value of at least 32 characters
+- `RESUX_PUBLIC_CONSTURL` only when the deployed API base URL must differ from the built-in default
+
+Do not store the production signing secret in the repository.
+
+## Main Resux configuration
+
+- `resux.config.ts` — Resux modules, i18n, runtime config, fonts, icons, UI and package modes
+- `nitro.config.ts` — server adapter/runtime routing configuration
+- `client-enhancements/` — progressive browser integrations such as Swiper
+- `islands/vue/` — Vue-owned interactive islands
+- `pages/` — file-based application routes
