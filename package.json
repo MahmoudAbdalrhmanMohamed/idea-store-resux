@@ -2,19 +2,25 @@
   "name": "idea-stores",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "scripts": {
+    "prepare": "resux prepare .",
     "dev": "resux dev . --port 6534",
     "build": "resux build .",
     "start": "resux start . --port 6534",
     "preview": "resux preview . --port 6534",
-    "check": "resux check ."
+    "check": "resux check .",
+    "inspect": "resux inspect ."
   },
   "dependencies": {
     "@vueuse/core": "^12.5.0",
-    "resuxjs": "file:../resux/resuxjs-0.3.0.tgz",
+    "resuxjs": "0.4.0-beta.2",
     "swiper": "^11.2.2",
-    "vue": "^3.4.0",
-    "vue-router": "^4.3.0"
+    "vee-validate": "4.15.1",
+    "vue": "^3.5.33",
+    "vue-router": "^4.6.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
