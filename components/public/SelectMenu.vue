@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full" ref="selectMenuRef">
+  <div class="relative w-full">
     <button
       type="button"
       @click="isOpen = !isOpen"
@@ -32,8 +32,6 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount, computed } from "vue";
-
 const props = defineProps({
   modelValue: {
     type: [String, Number, Object],
@@ -52,7 +50,6 @@ const props = defineProps({
 const emit = defineEmits(["update:modelValue"]);
 
 const isOpen = ref(false);
-const selectMenuRef = ref(null);
 
 const displayValue = computed(() => {
   if (!props.modelValue) return props.placeholder;
@@ -81,17 +78,4 @@ const selectOption = (option) => {
   isOpen.value = false;
 };
 
-const handleClickOutside = (event) => {
-  if (selectMenuRef.value && !selectMenuRef.value.contains(event.target)) {
-    isOpen.value = false;
-  }
-};
-
-onMounted(() => {
-  document.addEventListener("click", handleClickOutside);
-});
-
-onBeforeUnmount(() => {
-  document.removeEventListener("click", handleClickOutside);
-});
 </script>
