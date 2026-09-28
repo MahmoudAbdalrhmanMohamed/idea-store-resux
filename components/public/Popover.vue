@@ -1,5 +1,5 @@
 <template>
-  <div class="relative inline-block w-full" ref="popoverRef">
+  <div class="relative inline-block w-full">
     <div @click="togglePopover" class="w-full cursor-pointer">
       <slot />
     </div>
@@ -14,8 +14,6 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount, computed } from "vue";
-
 const props = defineProps({
   placement: {
     type: String,
@@ -24,7 +22,6 @@ const props = defineProps({
 });
 
 const isOpen = ref(false);
-const popoverRef = ref(null);
 
 const togglePopover = () => {
   isOpen.value = !isOpen.value;
@@ -40,17 +37,4 @@ const placementClass = computed(() => {
   return "left-0 origin-top-left";
 });
 
-const handleClickOutside = (event) => {
-  if (popoverRef.value && !popoverRef.value.contains(event.target)) {
-    isOpen.value = false;
-  }
-};
-
-onMounted(() => {
-  document.addEventListener("click", handleClickOutside);
-});
-
-onBeforeUnmount(() => {
-  document.removeEventListener("click", handleClickOutside);
-});
 </script>
