@@ -152,8 +152,6 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
-
 // Fallback contact data
 const fallbackContactData = {
   phone_sa: "+966 12 345 6789",
@@ -169,9 +167,7 @@ const config = useRuntimeConfig();
 const url = config.public.ConstUrl;
 
 // Fetch settings with server-side caching
-const { data, error } = await useFetch(`${url}/settings`, {
-  timeout: 10000,
-});
+const { data, error } = await useFetch(`${url}/settings`);
 
 if (error.value) {
   apiError.value = true;
