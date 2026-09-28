@@ -1,75 +1,71 @@
-# Nuxt Minimal Starter
+# Idea Store — Resux
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This application runs on [Resux](https://github.com/MahmoudAbdalrhmanMohamed/resux) and is configured for deployment on Vercel.
 
-## Setup
+## Requirements
 
-Make sure to install dependencies:
+- Node.js 20.19 or newer
+- npm
+- Resux is installed from npm through the `resuxjs` dependency
 
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+## Local development
 
 ```bash
-# npm
+npm ci
+npm run check
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+The development server runs on:
 
-Build the application for production:
+```text
+http://localhost:6534
+```
+
+## Environment
+
+Copy `.env.example` to `.env` when you need to override the public API base URL:
 
 ```bash
-# npm
+cp .env.example .env
+```
+
+```env
+RESUX_PUBLIC_CONSTURL=https://isp.megatron-soft.com/api/v1
+```
+
+If the variable is not set, the application uses the same URL as its built-in default.
+
+## Production build
+
+```bash
+npm ci
+npm run check
 npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+To preview the production build locally:
 
 ```bash
-# npm
 npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Vercel
+
+The repository includes `vercel.json`. Vercel runs:
+
+```bash
+npm run build
+```
+
+Resux detects the Vercel environment and produces the Vercel Build Output automatically.
+
+For Vercel, use Node.js 20.19+ and configure `RESUX_PUBLIC_CONSTURL` only if the production API base URL must differ from the built-in default.
+
+## Main Resux configuration
+
+- `resux.config.ts` — Resux modules, i18n, runtime config, fonts, icons, UI and package modes
+- `nitro.config.ts` — server adapter/runtime routing configuration
+- `client-enhancements/` — progressive browser integrations such as Swiper
+- `islands/vue/` — Vue-owned interactive islands
+- `pages/` — file-based application routes
