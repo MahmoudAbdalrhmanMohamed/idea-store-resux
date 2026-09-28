@@ -5,8 +5,6 @@
 </template>
 
 <script setup>
-import { onBeforeUnmount, onMounted, ref } from "vue";
-
 const props = defineProps({
   minHeight: {
     type: String,
@@ -20,7 +18,6 @@ const props = defineProps({
 
 const root = ref(null);
 const visible = ref(false);
-let observer = null;
 
 onMounted(() => {
   if (!root.value || visible.value) {
@@ -32,21 +29,16 @@ onMounted(() => {
     return;
   }
 
-  observer = new IntersectionObserver(
+  const observer = new IntersectionObserver(
     ([entry]) => {
       if (!entry?.isIntersecting) {
         return;
       }
       visible.value = true;
-      observer?.disconnect();
-      observer = null;
+      observer.disconnect();
     },
     { rootMargin: props.rootMargin },
   );
   observer.observe(root.value);
-});
-
-onBeforeUnmount(() => {
-  observer?.disconnect();
 });
 </script>
