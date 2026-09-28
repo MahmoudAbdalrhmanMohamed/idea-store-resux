@@ -107,8 +107,6 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount } from "vue";
-
 const fallbackPartnerImage =
   "https://img.freepik.com/free-vector/no-data-concept-illustration_114360-536.jpg";
 
@@ -155,33 +153,11 @@ const maxRetries = 3;
 // API fetch
 const config = useRuntimeConfig();
 const url = config.public.ConstUrl;
-const resuxApp = useResuxApp();
+const { data, error, pending, refresh } = await useFetch(`${url}/partners`);
 
-const { data, error, pending, refresh } = await useFetch(`${url}/partners`, {
-  getCachedData: (key) => resuxApp.payload.data[key] || resuxApp.static.data[key],
-
-  retry: maxRetries,
-  retryDelay: 1000,
-  timeout: 10000,
-
-  onRequestError({ error: requestError }) {
-    console.error("Partners request failed:", requestError);
-    apiError.value = true;
-  },
-
-  onResponseError({ response }) {
-    console.error("Partners API error:", {
-      status: response?.status,
-      data: response?._data,
-    });
-    apiError.value = true;
-  },
-
-  // Fallback data structure
-  default: () => ({
-    data: [],
-  }),
-});
+if (error.value) {
+  apiError.value = true;
+}
 
 // Computed property for displayed partners with fallback
 const displayedPartners = computed(() => {
@@ -233,58 +209,20 @@ const retryApiCall = async () => {
   }
 };
 
-// Auto-dismiss error after 10 seconds
-let errorTimeout;
+// Client-only visual enhancement. API failures remain recoverable through the retry action.
 onMounted(() => {
   if (apiError.value) {
-    errorTimeout = setTimeout(() => {
+    setTimeout(() => {
       showApiError.value = false;
     }, 10000);
   }
 
-  // Initialize AOS if not already initialized
   if (typeof window !== "undefined" && window.AOS) {
     window.AOS.init({
       once: true,
       duration: 300,
       easing: "ease-out-cubic",
     });
-  }
-});
-
-// Cleanup timeout
-onBeforeUnmount(() => {
-  if (errorTimeout) {
-    clearTimeout(errorTimeout);
-  }
-});
-
-// Network recovery detection
-let onlineHandler;
-if (process.client) {
-  onlineHandler = () => {
-    if (apiError.value) {
-      apiError.value = false;
-      showApiError.value = false;
-      retryCount.value = 0;
-      // Auto-retry when network comes back
-      setTimeout(() => retryApiCall(), 1000);
-    }
-  };
-
-  window.addEventListener("online", onlineHandler);
-
-  // Check initial network status
-  if (!navigator.onLine) {
-    apiError.value = true;
-    showApiError.value = true;
-  }
-}
-
-// Cleanup event listener
-onBeforeUnmount(() => {
-  if (process.client && onlineHandler) {
-    window.removeEventListener("online", onlineHandler);
   }
 });
 </script>
