@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^12.5.0",
-    "resuxjs": "0.4.0-beta.2",
+    "resuxjs": "0.4.0-beta.4",
     "swiper": "^11.2.2",
     "vue": "^3.5.43",
     "vue-router": "^4.3.0"
