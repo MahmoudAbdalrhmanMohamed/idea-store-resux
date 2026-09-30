@@ -6,7 +6,7 @@ This application runs on [Resux](https://github.com/MahmoudAbdalrhmanMohamed/res
 
 - Node.js 20.19.x, or Node.js 22.12 or newer
 - npm
-- Resux is pinned to the current `next` beta `resuxjs@0.4.0-beta.6`
+- Resux is pinned to the published `next` beta `resuxjs@0.4.0-beta.6`
 
 ## Local development
 
