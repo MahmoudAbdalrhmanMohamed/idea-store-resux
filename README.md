@@ -70,6 +70,8 @@ npm run build
 
 Resux detects the Vercel environment and produces the Vercel Build Output automatically.
 
+CI also validates the published Resux dependency with `npm ci`, runs `npm run check`, builds in Vercel mode, and verifies the generated `.vercel/output` structure before production changes are accepted.
+
 Configure the Vercel project with:
 
 - Node.js 20.19.x, or Node.js 22.12 or newer
