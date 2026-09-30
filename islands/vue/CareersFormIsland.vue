@@ -371,29 +371,9 @@
 import { ref, computed, onMounted, onBeforeUnmount, watch } from "vue";
 import { useDropZone } from "@vueuse/core";
 import SelectMenu from "../../components/public/SelectMenu.vue";
+import { useToast } from "../../composables/useToast";
 import ar from "../../i18n/locales/ar.json";
 import en from "../../i18n/locales/en.json";
-function useToast() {
-  const toasts = useState("idea-store-toasts", () => []);
-
-  function remove(id) {
-    toasts.value = toasts.value.filter((toast) => toast.id !== id);
-  }
-
-  function add(toast) {
-    const entry = {
-      id: Math.random().toString(36).slice(2, 9),
-      ...toast,
-    };
-
-    toasts.value.push(entry);
-    setTimeout(() => remove(entry.id), toast.timeout ?? 4000);
-    return entry;
-  }
-
-  return { toasts, add, remove };
-}
-
 
 const props = defineProps({
   url: {
