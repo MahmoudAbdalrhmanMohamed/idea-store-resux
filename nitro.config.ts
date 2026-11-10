@@ -1,6 +1,9 @@
 import { defineNitroConfig } from "nitropack/config";
 
 export default defineNitroConfig({
+  cloudflare: {
+    nodeCompat: true
+  },
   srcDir: ".resux-nitro",
   compatibilityDate: "2026-05-02",
   // Resux uses top-level /plugins, /modules, and /middleware for app features.

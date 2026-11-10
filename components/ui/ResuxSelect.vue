@@ -2,9 +2,11 @@
   <div class="relative w-full">
     <select
       :id="id"
+      :name="name || id || undefined"
       :value="modelValue"
       :required="required"
       :disabled="disabled"
+      :aria-label="computedAriaLabel"
       :class="customClass"
       @change="onChange"
     >
@@ -42,6 +44,14 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  name: {
+    type: String,
+    default: "",
+  },
+  ariaLabel: {
+    type: String,
+    default: "",
+  },
   disabled: {
     type: Boolean,
     default: false,
@@ -61,6 +71,10 @@ const emit = defineEmits(["update:modelValue"]);
 const onChange = (event) => {
   emit("update:modelValue", event.target.value);
 };
+
+const computedAriaLabel = computed(() => {
+  return props.ariaLabel || props.placeholder || props.name || props.id || undefined;
+});
 
 const customClass = computed(() => props.class);
 

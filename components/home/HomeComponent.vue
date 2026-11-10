@@ -35,7 +35,7 @@
       :to="whatsappLink"
       :src="whatsapp"
       :locale="locale.value"
-      aria-label="whatsapp-link"
+      :aria-label="'Contact via WhatsApp'"
     />
 
     <!-- API Error Indicator -->
@@ -47,6 +47,8 @@
             {{ $t("apiError.heroWarning") || "Contact info loading failed" }}
           </p>
           <button
+            type="button"
+            :aria-label="$t('Dismiss') || 'Dismiss'"
             @click="showApiError = false"
             class="text-red-500 hover:text-red-700"
           >
@@ -91,7 +93,7 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 
-const home = "/assets/home.webm";
+const home = "/assets/homeV2.mp4";
 const whatsapp = "/assets/whatsapp.webm";
 const poster = "/assets/poster.webp";
 

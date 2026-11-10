@@ -1,7 +1,7 @@
 <template>
   <GarySetion>
     <h2
-      class="text-center alx mb-4 md:mb-8 text-zero3 font-[400] text-xl md:text-2xl capitalize"
+      class="text-center alx mb-4 md:mb-8 text-[#0f766e] font-semibold text-xl md:text-2xl capitalize"
     >
       {{ $t("Our Clients") }}
     </h2>
@@ -20,15 +20,12 @@
             class="swiper-slide flex-shrink-0 w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6"
           >
             <div
-              data-aos="fade-up"
-              :data-aos-duration="index * 100"
-              data-aos-easing="ease-out-cubic"
-              data-aos-delay="200"
+              v-anime="'fade-up'"
               class="bg-white rounded-lg shadow-slide grid place-items-center place-content-center"
             >
               <ResuxImg
                 :src="slide.image"
-                alt="slide"
+                :alt="slide.title || slide.name || ('Client partner ' + (index + 1))" width="148" height="148"
                 class="object-contain rounded-lg h-[148px] w-full"
               />
             </div>

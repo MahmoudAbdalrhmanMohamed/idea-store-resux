@@ -12,6 +12,8 @@
           </label>
           <ResuxSelect
             id="SuffixGary"
+            name="suffix"
+            :aria-label="$t('Suffix')"
             v-model="formData.suffix"
             :options="Suffixes"
             :placeholder="$t('Mr')"
@@ -27,6 +29,8 @@
           </label>
           <ResuxInput
             id="PositionGary"
+            name="position"
+            :aria-label="$t('Position')"
             v-model="formData.position"
             type="text"
             :placeholder="$t('Position')"
@@ -43,6 +47,8 @@
           </label>
           <ResuxInput
             id="nameGary"
+            name="firstName"
+            :aria-label="$t('First name')"
             v-model="formData.name"
             type="text"
             required
@@ -60,6 +66,8 @@
           </label>
           <ResuxInput
             id="lastGary"
+            name="lastName"
+            :aria-label="$t('Last name')"
             v-model="formData.last"
             type="text"
             required
@@ -78,6 +86,8 @@
         </label>
         <ResuxInput
           id="CompanyGary"
+          name="company"
+          :aria-label="$t('Company')"
           v-model="formData.company"
           type="text"
           :placeholder="$t('Company')"
@@ -92,6 +102,8 @@
         </label>
         <ResuxInput
           id="EmailGary"
+          name="email"
+          :aria-label="$t('Email')"
           v-model="formData.email"
           type="email"
           required
@@ -106,13 +118,19 @@
           {{ $t("Phone Number") }}
         </label>
         <div class="flex gap-2">
+          <label for="countryCodeGary" class="sr-only">{{ $t("Country Code") || "Country Code" }}</label>
           <ResuxSelect
+            id="countryCodeGary"
+            name="countryCode"
+            :aria-label="$t('Country Code') || 'Country Code'"
             v-model="formData.countryCode"
             :options="countryOptions"
             class="w-1/3 text-six6 font-normal text-base outline-none bg-white border border-d0 shadow-form rounded-lg py-3 px-4"
           />
           <ResuxInput
             id="phoneGary"
+            name="phone"
+            :aria-label="$t('Phone Number')"
             v-model="formData.phone"
             type="tel"
             required
@@ -130,6 +148,8 @@
         </label>
         <ResuxTextarea
           id="messGary"
+          name="message"
+          :aria-label="$t('Message')"
           v-model="formData.mess"
           :rows="4"
           :placeholder="$t('Message')"
@@ -140,7 +160,7 @@
       <ResuxButton
         :disabled="isSubmitting"
         type="submit"
-        class="block w-full bg-three3 shadow-lg hover:shadow-3xl text-white capitalize py-3 px-5 rounded-lg hover:bg-zero3 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+        class="block w-full bg-[#1a68ba] hover:bg-[#15579d] shadow-lg hover:shadow-3xl text-white capitalize py-3 px-5 rounded-lg hover:bg-zero3 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         <span v-if="isSubmitting">
           {{ $t('Sending...') }}

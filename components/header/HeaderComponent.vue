@@ -11,12 +11,14 @@
           class="flex gap-1 items-center"
           :class="locale.value === 'ar' ? 'flex-row-reverse text-left' : ''"
           :to="localePath('/')"
-        >
+          >
           <ResuxImg
             :src="logo"
             class="w-[40px] h-[72px] lg:h-[80px] object-contain"
             loading="eager"
-            alt="img"
+            alt="Ideal Stores Logo"
+            width="40"
+            height="100"
           />
           <div>
             <p class="text-white text-xl font-bold text-nowrap">

@@ -11,7 +11,6 @@
       </ResuxLink>
       <ResuxLink
         :to="localePath('/about-us')"
-        aria-label="about-us"
         class="linkClass font-semibold text-base text-white"
       >
         {{ $t("footer.aboutUs") }}

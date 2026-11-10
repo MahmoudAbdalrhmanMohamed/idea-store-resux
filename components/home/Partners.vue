@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="text-center text-three3 font-semibold text-lg md:text-2xl">
+    <h2 class="text-center text-[#0369a1] font-semibold text-lg md:text-2xl">
       {{ $t("Our Partners") }}
     </h2>
 
@@ -72,7 +72,7 @@
       <div
         v-for="(partner, index) in displayedPartners"
         :key="partner.id || `partner-${index}`"
-        class="partner-card bg-white rounded-lg w-[148px] h-[148px] max-w-[148px] max-h-[148px] grid place-items-center place-content-center md:basis-[calc(100%/6-2rem)] p-4"
+        class="partner-card bg-white rounded-lg w-[148px] h-[148px] max-w-[148px] max-h-[148px] grid place-items-center place-content-center md:basis-[calc(100%/6-2rem)] p-4" v-anime="'fade-up'"
       >
         <ResuxImg
           :src="partner.image || fallbackPartnerImage"

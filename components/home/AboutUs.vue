@@ -3,15 +3,19 @@
     <div
       class="flex justify-center md:flex-row flex-col items-center gap-4 md:gap-10 lg:gap-12 xl:gap-24 py-8"
     >
-      <div class="relative">
+      <div class="relative" v-anime="'slide-in-left'">
         <ResuxImg
           :src="one"
-          alt="img"
+          alt="Ideal Stores Healthcare Innovation"
+          width="500"
+          height="514"
           class="rounded-[12px] tooSmall:w-[300px] tooSmall:h-[250px] md:w-[400px] lg:w-[500px] md:h-[350px] lg:h-[514px] object-cover shadow-sm"
         />
         <ResuxImg
           :src="two"
-          alt="img"
+          alt="Ideal Stores Healthcare Operations"
+          width="300"
+          height="268"
           :class="
             locale === 'en'
               ? 'tooSmall:-right-3 md:-right-8 lg:-right-4 xl:-right-8 border-l-[10px] border-l-white'
@@ -21,8 +25,8 @@
         />
       </div>
 
-      <div>
-        <span class="text-[#38bdf8] text-base font-semibold block mb-2 tracking-wide">{{ $t("About Us") }}</span>
+      <div v-anime="'slide-in-right'">
+        <span class="text-[#0369a1] text-base font-semibold block mb-2 tracking-wide">{{ $t("About Us") }}</span>
         <h2
           class="text-[#1e293b] text-center md:text-start text-[28px] font-bold md:text-[38px] leading-tight"
         >
@@ -36,9 +40,10 @@
 
         <ResuxLink
           :to="localePath('/about-us')"
-          class="border-2 border-[#38bdf8] text-[#38bdf8] hover:bg-[#38bdf8] hover:text-white font-medium w-fit mx-auto md:mx-0 transition-all duration-300 rounded-lg py-3 px-8 inline-block shadow-sm"
+          :aria-label="$t('About Us') + ' - ' + $t('Learn More')"
+          class="border-2 border-[#0369a1] text-[#0369a1] hover:bg-[#0369a1] hover:text-white font-medium w-fit mx-auto md:mx-0 transition-all duration-300 rounded-lg py-3 px-8 inline-block shadow-sm"
         >
-          {{ $t("Learn More") }}
+          <span>{{ $t("Learn More") }}</span><span class="sr-only"> {{ $t("About Us") }}</span>
         </ResuxLink>
       </div>
     </div>

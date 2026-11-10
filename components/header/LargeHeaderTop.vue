@@ -6,7 +6,7 @@
       <ResuxLink
         external
         target="_blank"
-        aria-label="phone link"
+        :aria-label="'Phone: ' + contactData.phone_sa"
         :to="`tel:${contactData.phone_sa}`"
         class="flex items-center gap-2 text-white transition-all duration-300 hover:text-[#38bdf8]"
       >
@@ -17,7 +17,7 @@
         external
         target="_blank"
         :to="`mailto:${contactData.email}`"
-        aria-label="email link"
+        :aria-label="'Email: ' + contactData.email"
         class="flex items-center gap-2 text-white px-2 group xl:px-4 border-x border-x-white/30 transition-all duration-300 hover:text-[#38bdf8]"
       >
         <Icon name="material-symbols:mail" size="1.25rem" />
@@ -30,19 +30,19 @@
 
       <div class="relative hidden xl:flex items-center gap-3">
         <div class="flex cursor-pointer items-center gap-1.5 text-white/90 hover:text-white transition-colors">
-          <ResuxImg :src="sa" class="w-[32px] h-[22px] object-contain rounded-sm" alt="Saudi Arabia" />
+          <ResuxImg :src="sa" class="w-[32px] h-[22px] object-contain rounded-sm" width="32" height="22" alt="Saudi Arabia" />
           <p class="text-xs font-medium">
             {{ $t("Saudi Arabia") }}
           </p>
         </div>
         <div class="flex cursor-pointer items-center gap-1.5 text-white/90 hover:text-white transition-colors">
-          <ResuxImg :src="ua" class="w-[32px] h-[22px] object-contain rounded-sm" alt="UAE" />
+          <ResuxImg :src="ua" class="w-[32px] h-[22px] object-contain rounded-sm" width="32" height="22" alt="UAE" />
           <p class="text-xs font-medium">
             {{ $t("UAE") }}
           </p>
         </div>
         <div class="flex cursor-pointer items-center gap-1.5 text-white/90 hover:text-white transition-colors">
-          <ResuxImg :src="eg" class="w-[32px] h-[22px] object-contain rounded-sm" alt="Egypt" />
+          <ResuxImg :src="eg" class="w-[32px] h-[22px] object-contain rounded-sm" width="32" height="22" alt="Egypt" />
           <p class="text-xs font-medium">
             {{ $t("egypt") }}
           </p>

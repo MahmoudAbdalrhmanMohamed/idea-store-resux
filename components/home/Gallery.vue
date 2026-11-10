@@ -1,28 +1,19 @@
 <template>
   <GarySetion>
     <h2
-      data-aos="fade-down"
-      data-aos-duration="300"
-      data-aos-easing="ease-out-cubic"
-      data-aos-delay="200"
-      class="text-center font-semibold text-2xl text-zero3 capitalize"
+      v-anime="'fade-up'"
+      class="text-center font-semibold text-2xl text-[#0f766e] font-semibold capitalize"
     >
       {{ $t("gallery") }}
     </h2>
     <p
-      data-aos="fade-left"
-      data-aos-duration="300"
-      data-aos-easing="ease-out-cubic"
-      data-aos-delay="200"
+      v-anime="'fade-up'"
       class="text-center capitalize text-two9 text-xl font-semibold pt-3 pb-2 md:text-3xl"
     >
       {{ $t("Discover Our Gallery") }}
     </p>
     <p
-      data-aos="fade-right"
-      data-aos-duration="300"
-      data-aos-easing="ease-out-cubic"
-      data-aos-delay="200"
+      v-anime="'fade-up'"
       class="text-center capitalize text-six6 max-w-[768px] mx-auto text-base font-[400] pt-3 pb-6 md:text-lg"
     >
       {{ $t("desdes3") }}
@@ -50,7 +41,9 @@
             >
               <ResuxImg
                 :src="al"
-                alt="slide"
+                :alt="'Ideal Stores Gallery Image ' + (index + 1)"
+                width="280"
+                height="200"
                 class="object-cover rounded-lg h-full"
               />
             </div>

@@ -1,19 +1,13 @@
 <template>
   <WhiteSetion>
     <h2
-      data-aos="fade-up"
-      data-aos-duration="300"
-      data-aos-easing="ease-out-cubic"
-      data-aos-delay="200"
+      v-anime="'fade-up'"
       class="text-one0 text-xl font-semibold tracking-[-2%] text-center md:text-3xl"
     >
       {{ $t("Get in touch") }}
     </h2>
     <p
-      data-aos="fade-down"
-      data-aos-duration="300"
-      data-aos-easing="ease-out-cubic"
-      data-aos-delay="200"
+      v-anime="'fade-up'"
       class="text-six6 max-w-[946px] mx-auto text-sm font-[400] tracking-[-2%] text-center md:text-xl my-4"
     >
       {{ $t("Our friendly team would love to hear from you") }}
@@ -25,10 +19,7 @@
       >
         <!-- Email Card -->
         <div
-          data-aos="fade-down"
-          data-aos-duration="300"
-          data-aos-easing="ease-out-cubic"
-          data-aos-delay="100"
+          v-anime="'fade-up'"
           class="md:basis-[calc(100%/3-1rem)] rounded-2xl p-6 bg-three3/[8%]"
         >
           <div
@@ -48,7 +39,7 @@
             </p>
             <a
               :href="`mailto:${contactData.email}`"
-              class="underline text-three3 font-semibold"
+              class="underline text-[#0369a1] font-semibold"
               >{{ contactData.email }}</a
             >
             <div v-if="isUsingFallback" class="mt-2 text-xs text-yellow-600">
@@ -59,10 +50,7 @@
         
         <!-- Address Card -->
         <div
-          data-aos="fade-up"
-          data-aos-duration="300"
-          data-aos-easing="ease-out-cubic"
-          data-aos-delay="100"
+          v-anime="'fade-up'"
           class="md:basis-[calc(100%/3-1rem)] rounded-2xl p-6 bg-three3/[8%]"
         >
           <div
@@ -80,7 +68,7 @@
             <p class="text-five5 text-base font-normal pt-2 pb-8">
               {{ $t("See you at our location!") }}
             </p>
-            <div class="underline text-three3 font-semibold">
+            <div class="underline text-[#0369a1] font-semibold">
               {{ contactData.address || $t('Address not available') }}
             </div>
           </div>
@@ -88,10 +76,7 @@
         
         <!-- Phone Card -->
         <div
-          data-aos="fade-down"
-          data-aos-duration="300"
-          data-aos-easing="ease-out-cubic"
-          data-aos-delay="100"
+          v-anime="'fade-up'"
           class="md:basis-[calc(100%/3-1rem)] rounded-2xl p-6 bg-three3/[8%]"
         >
           <div
@@ -108,7 +93,7 @@
             </p>
             <a
               :href="`tel:${contactData.phone_sa}`"
-              class="underline text-three3 font-semibold flex items-end"
+              class="underline text-[#0369a1] font-semibold flex items-end"
             >
               {{ contactData.phone_sa }}
             </a>
@@ -132,9 +117,7 @@
               <p>{{ $t('apiError.message') || 'Unable to load contact information.' }}</p>
             </div>
             <div class="mt-3">
-              <button
-                @click="apiError = false"
-                class="text-sm font-medium text-yellow-800 hover:text-yellow-900"
+              <button type="button" :aria-label="$t('apiError.dismiss') || 'Dismiss'" @click="apiError = false" class="text-sm font-medium text-yellow-800 hover:text-yellow-900"
               >
                 {{ $t('apiError.dismiss') || 'Dismiss' }}
               </button>

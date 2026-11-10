@@ -15,7 +15,9 @@
           <ResuxImg
             :src="logo"
             class="object-contain w-[40px] h-[100px]"
-            alt="img"
+            alt="Ideal Stores Logo"
+            width="40"
+            height="100"
           />
           <div>
             <p class="text-white text-xl font-bold tracking-[-1%] text-nowrap">
@@ -34,9 +36,9 @@
           <div class="mt-4 md:mt-6 space-y-4">
             <ResuxLink
               external
-              aria-label="link"
+              :aria-label="'Phone ' + contactData.phone_sa"
               :to="`tel:${contactData.phone_sa}`"
-              class="flex items-center gap-1 text-seven7 transition-all duration-300 hover:text-zero3 font-[300] text-base"
+              class="flex items-center gap-1 text-[#cbd5e1] transition-all duration-300 hover:text-zero3 font-[300] text-base"
             >
               <Icon name="material-symbols:call" size="1.5rem" />
               <p class="text-base font-[300]">{{ contactData.phone_sa }}</p>
@@ -44,9 +46,9 @@
             </ResuxLink>
             <ResuxLink
               external
-              aria-label="link"
+              :aria-label="'Phone ' + contactData.phone_eg"
               :to="`tel:${contactData.phone_eg}`"
-              class="flex items-center gap-1 text-seven7 font-[300] transition-all duration-300 hover:text-zero3 text-base"
+              class="flex items-center gap-1 text-[#cbd5e1] font-[300] transition-all duration-300 hover:text-zero3 text-base"
             >
               <Icon name="material-symbols:call" size="1.5rem" />
               <p class="text-base font-[300]">{{ contactData.phone_eg }}</p>
@@ -56,8 +58,8 @@
             <ResuxLink
               external
               :to="`mailto:${contactData.email}`"
-              aria-label="link"
-              class="flex items-center gap-1 text-seven7 font-[300] transition-all duration-300 hover:text-zero3 text-base"
+              :aria-label="'Email ' + contactData.email"
+              class="flex items-center gap-1 text-[#cbd5e1] font-[300] transition-all duration-300 hover:text-zero3 text-base"
             >
               <Icon name="material-symbols:mail" size="1.5rem" />
               <p class="text-base font-[300]">{{ contactData.email }}</p>
@@ -70,7 +72,7 @@
                 <Icon name="material-symbols:warning" size="1rem" />
                 {{ $t('apiError.contactInfoFallback') || 'Using fallback contact information' }}
               </p>
-              <button @click="showApiError = false" class="mt-1 text-red-300 hover:text-white">
+              <button type="button" :aria-label="$t('apiError.dismiss') || 'Dismiss'" @click="showApiError = false" class="mt-1 text-red-300 hover:text-white">
                 {{ $t('apiError.dismiss') || 'Dismiss' }}
               </button>
             </div>
@@ -82,17 +84,17 @@
           </p>
           <div class="mt-4 md:mt-6 space-y-4">
             <div
-              class="text-seven7 font-[300] transition-all duration-300 hover:text-zero3 text-base"
+              class="text-[#cbd5e1] font-[300] transition-all duration-300 hover:text-zero3 text-base"
             >
               {{ $t("Saudi Arabia") }}
             </div>
             <div
-              class="text-seven7 font-[300] transition-all duration-300 hover:text-zero3 text-base"
+              class="text-[#cbd5e1] font-[300] transition-all duration-300 hover:text-zero3 text-base"
             >
               {{ $t("United Arab Emirates") }}
             </div>
             <div
-              class="text-seven7 font-[300] transition-all duration-300 hover:text-zero3 text-base"
+              class="text-[#cbd5e1] font-[300] transition-all duration-300 hover:text-zero3 text-base"
             >
               {{ $t("Egypt") }}
             </div>
@@ -105,38 +107,37 @@
           <div class="mt-4 md:mt-6 space-y-4">
             <ResuxLink
               :to="localePath('/about-us')"
-              aria-label="about-us"
-              class="text-seven7 font-[300] transition-all duration-300 block hover:text-zero3 text-base"
+              class="text-[#cbd5e1] font-[300] transition-all duration-300 block hover:text-zero3 text-base"
             >
               {{ $t("footer.aboutUs") }}
             </ResuxLink>
             <!-- <ResuxLink
               :to="localePath('/products')"
-              class="text-seven7 font-[300] transition-all duration-300 block hover:text-zero3 text-base"
+              class="text-[#cbd5e1] font-[300] transition-all duration-300 block hover:text-zero3 text-base"
             >
               {{ $t("products") }}
             </ResuxLink> -->
             <ResuxLink
               :to="localePath('/partners')"
-              class="text-seven7 font-[300] transition-all duration-300 block hover:text-zero3 text-base"
+              class="text-[#cbd5e1] font-[300] transition-all duration-300 block hover:text-zero3 text-base"
             >
               {{ $t("Partners and Customers") }}
             </ResuxLink>
             <ResuxLink
               :to="localePath('/contact-us')"
-              class="text-seven7 font-[300] transition-all duration-300 block hover:text-zero3 text-base"
+              class="text-[#cbd5e1] font-[300] transition-all duration-300 block hover:text-zero3 text-base"
             >
               {{ $t("footer.contactUs") }}
             </ResuxLink>
             <ResuxLink
               :to="localePath('/invest-with-us')"
-              class="text-seven7 font-[300] transition-all duration-300 block hover:text-zero3 text-base"
+              class="text-[#cbd5e1] font-[300] transition-all duration-300 block hover:text-zero3 text-base"
             >
               {{ $t("invest with us") }}
             </ResuxLink>
             <!-- <ResuxLink
               :to="localePath('/blogs')"
-              class="text-seven7 font-[300] transition-all duration-300 block hover:text-zero3 text-base"
+              class="text-[#cbd5e1] font-[300] transition-all duration-300 block hover:text-zero3 text-base"
             >
               {{ $t("blogs") }}
             </ResuxLink> -->

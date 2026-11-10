@@ -2,7 +2,7 @@
   <ResuxLink
     :to="props.to"
     target="_blank"
-    :aria-label="props.ariaLabel"
+    :aria-label="props.ariaLabel || $attrs['aria-label'] || 'Contact via WhatsApp'"
     :class="[
       props.locale !== 'ar' ? 'right-6 md:right-10' : 'left-6 md:left-10',
       'floating-whatsapp-btn fixed z-[300] bottom-8 md:bottom-12 flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#25D366] text-white shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer group',

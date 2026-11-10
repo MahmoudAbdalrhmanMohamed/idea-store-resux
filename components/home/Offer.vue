@@ -1,19 +1,13 @@
 <template>
   <GarySetion>
     <h2
-      data-aos="fade-up"
-      data-aos-duration="300"
-      data-aos-easing="ease-out-cubic"
-      data-aos-delay="100"
-      class="text-center alx font-[400] text-2xl text-zero3 capitalize"
+      v-anime="'fade-up'"
+      class="text-center alx font-[400] text-2xl text-[#0f766e] font-semibold capitalize"
     >
       {{ $t("What We Offer") }}
     </h2>
     <p
-      data-aos="fade-left"
-      data-aos-duration="300"
-      data-aos-easing="ease-out-cubic"
-      data-aos-delay="100"
+      v-anime="'fade-up'"
       class="text-center capitalize text-two9 text-xl font-medium pt-4 pb-8 md:text-3xl"
     >
       {{ $t("We are committed to revolutionizing healthcare in MENA") }}
@@ -21,10 +15,7 @@
 
     <div class="flex md:flex-row flex-col flex-wrap justify-center gap-8">
       <div
-        data-aos="fade-down"
-        data-aos-duration="300"
-        data-aos-easing="ease-out-cubic"
-        data-aos-delay="100"
+        v-anime="'fade-up'"
         class="md:basis-[calc(100%/3-2rem)]"
       >
         <div
@@ -44,10 +35,7 @@
       </div>
 
       <div
-        data-aos="fade-up"
-        data-aos-duration="300"
-        data-aos-easing="ease-out-cubic"
-        data-aos-delay="200"
+        v-anime="'fade-up'"
         class="md:basis-[calc(100%/3-2rem)]"
       >
         <div
@@ -67,10 +55,7 @@
       </div>
 
       <div
-        data-aos="fade-up"
-        data-aos-duration="300"
-        data-aos-easing="ease-out-cubic"
-        data-aos-delay="300"
+        v-anime="'fade-up'"
         class="md:basis-[calc(100%/3-2rem)]"
       >
         <div
@@ -90,10 +75,7 @@
       </div>
 
       <div
-        data-aos="fade-up"
-        data-aos-duration="300"
-        data-aos-easing="ease-out-cubic"
-        data-aos-delay="400"
+        v-anime="'fade-up'"
         class="md:basis-[calc(100%/3-2rem)]"
       >
         <div

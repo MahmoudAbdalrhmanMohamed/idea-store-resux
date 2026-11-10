@@ -1,6 +1,7 @@
 <template>
   <input
     :id="id"
+    :name="name || id || undefined"
     :type="type"
     :value="modelValue"
     :placeholder="placeholder"
@@ -8,6 +9,7 @@
     :disabled="disabled"
     :minlength="minlength"
     :maxlength="maxlength"
+    :aria-label="computedAriaLabel"
     :class="customClass"
     @input="onInput"
   />
@@ -30,6 +32,14 @@ const props = defineProps({
     default: "",
   },
   id: {
+    type: String,
+    default: "",
+  },
+  name: {
+    type: String,
+    default: "",
+  },
+  ariaLabel: {
     type: String,
     default: "",
   },
@@ -58,6 +68,15 @@ const props = defineProps({
 const emit = defineEmits(["update:modelValue"]);
 
 const onInput = (event) => {
+  emit("update:modelValue", event.target.value);
+};
+
+const computedAriaLabel = computed(() => {
+  return props.ariaLabel || props.placeholder || props.name || props.id || undefined;
+});
+
+const customClass = computed(() => props.class);
+</script>
   emit("update:modelValue", event.target.value);
 };
 

@@ -2,13 +2,18 @@
   <div class="lg:hidden">
     <!-- Hamburger Icon -->
     <transition name="fade">
-      <Icon
-        v-show="!show"
-        name="hamburger"
-        size="2rem"
+      <button
+        type="button"
         @click="toggleMenu"
-        class="cursor-pointer my-auto text-ea"
-      />
+        :aria-label="$t('Open Navigation Menu') || 'Open Navigation Menu'"
+        class="cursor-pointer my-auto text-ea bg-transparent border-0 p-0 flex items-center justify-center focus:outline-none"
+      >
+        <Icon
+          v-show="!show"
+          name="hamburger"
+          size="2rem"
+        />
+      </button>
     </transition>
 
     <!-- Menu Overlay (Teleported) -->
@@ -29,7 +34,6 @@
 
           <ResuxLink
             :to="localePath('/about-us')"
-            aria-label="about-us"
             class="py-2 px-4 text-white hover:text-zero3 transition-all duration-300"
             @click="toggleMenu"
           >

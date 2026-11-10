@@ -1,11 +1,13 @@
 <template>
   <textarea
     :id="id"
+    :name="name || id || undefined"
     :value="modelValue"
     :rows="rows"
     :placeholder="placeholder"
     :required="required"
     :disabled="disabled"
+    :aria-label="computedAriaLabel"
     :class="customClass"
     @input="onInput"
   ></textarea>
@@ -31,6 +33,14 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  name: {
+    type: String,
+    default: "",
+  },
+  ariaLabel: {
+    type: String,
+    default: "",
+  },
   disabled: {
     type: Boolean,
     default: false,
@@ -50,6 +60,10 @@ const emit = defineEmits(["update:modelValue"]);
 const onInput = (event) => {
   emit("update:modelValue", event.target.value);
 };
+
+const computedAriaLabel = computed(() => {
+  return props.ariaLabel || props.placeholder || props.name || props.id || undefined;
+});
 
 const customClass = computed(() => props.class);
 </script>
